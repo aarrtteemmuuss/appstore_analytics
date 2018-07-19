@@ -4,6 +4,7 @@
 This is the alternative to official Apple Reporter tool written in Java. This tool is
 very easy to use and can be integrated with other projects with no need to provide
 Java dependecy and external calls to Java installation. 
+Inspired by https://github.com/fedoco/itc-reporter, but made with better CLI interface and Python 3 support.
 
 ### Requirements
 Requires python3 to be installed in your system
