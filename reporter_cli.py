@@ -57,7 +57,7 @@ def get_report_version(report_type, report_subtype):
     click.echo(reporter.asc_get_report_version(report_type, report_subtype))
 
 
-@click.command()
+@click.command(name='GetVendorsAndRegions')
 @click.option('--account', prompt=True)
 @click.option('--service', type=click.Choice(['Sales', 'Finance']), prompt=True)
 def get_vendor_and_regions(account, service):
@@ -65,7 +65,7 @@ def get_vendor_and_regions(account, service):
     click.echo(reporter.asc_get_vendor_and_regions(account, service))
 
 
-@click.command()
+@click.command(name='GetSalesReport')
 @click.option('--account', prompt=True)
 @click.option('--vendor', prompt=True)
 @click.option('--date_type', type=click.Choice(['Yearly', 'Monthly', 'Weekly', 'Daily']), prompt=True)
@@ -83,7 +83,7 @@ def get_sales_report(account, vendor, date_type, date, path):
         click.echo(str(exc))
 
 
-@click.command()
+@click.command(name='GetFinancialReport')
 @click.option('--account', prompt=True)
 @click.option('--vendor', prompt=True)
 @click.option('--region', prompt=True)
