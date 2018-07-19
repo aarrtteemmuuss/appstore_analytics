@@ -224,29 +224,28 @@ class Reporter:
         except Exception as exc:
             return str(exc)
 
-    # NOT ENABLED YET BELOW
-
-    def asc_get_financial_report(self, vendor, region, fiscal_year, fiscal_period):
+    def asc_get_financial_report(self, account, vendor, region, fiscal_year, fiscal_period):
         command = 'Finance.getReport, {0},{1},Financial,{2},{3}'.format(vendor,
                                                                         region,
                                                                         fiscal_year,
                                                                         fiscal_period)
         params = dict(
+            account=account,
             accesstoken=self.token
         )
 
-        try:
-            result = self.post_request(ENDPOINT_FINANCE, command, params=params)
-            return result.text
-        except Exception as exc:
-            return str(exc)
+        result = self.post_request(ENDPOINT_FINANCE, command, params=params)
+        return result
+
+    # TODO add to CLI
 
     def asc_get_subscription_report(self, vendor, date, version):
         command = 'Sales.getReport, {0},Subscription,Summary,Daily,{1},{2}'.format(
             vendor, date, version)
 
-        params = dict()
-
+        params = dict(
+            accesstoken=self.token
+        )
         try:
             result = self.post_request(ENDPOINT_SALES, command, params=params)
             return result.text
@@ -257,7 +256,9 @@ class Reporter:
         command = 'Sales.getReport, {0},SubscriptionEvent,Summary,Daily,{1},{2}'.format(
             vendor, date, version)
 
-        params = dict()
+        params = dict(
+            accesstoken=self.token
+        )
 
         try:
             result = self.post_request(ENDPOINT_SALES, command, params=params)
@@ -269,7 +270,9 @@ class Reporter:
         command = 'Sales.getReport, {0},Subscriber,Detailed,Daily,{1},{2}'.format(
             vendor, date, version)
 
-        params = dict()
+        params = dict(
+            accesstoken=self.token
+        )
 
         try:
             result = self.post_request(ENDPOINT_SALES, command, params=params)
@@ -281,7 +284,9 @@ class Reporter:
         command = 'Sales.getReport, {0},Newsstand,Detailed,{1},{2}'.format(
             vendor, date_type, date)
 
-        params = dict()
+        params = dict(
+            accesstoken=self.token
+        )
 
         try:
             result = self.post_request(ENDPOINT_SALES, command, params=params)
@@ -293,7 +298,9 @@ class Reporter:
         command = 'Sales.getReport, {0},Sales,Opt-In,Weekly,{1}'.format(vendor,
                                                                         date)
 
-        params = dict()
+        params = dict(
+            accesstoken=self.token
+        )
 
         try:
             result = self.post_request(ENDPOINT_SALES, command, params=params)
@@ -305,7 +312,9 @@ class Reporter:
         command = 'Sales.getReport, {0},Pre-Order,Summary,{1},{2}'.format(
             vendor, date_type, date)
 
-        params = dict()
+        params = dict(
+            accesstoken=self.token
+        )
 
         try:
             result = self.post_request(ENDPOINT_SALES, command, params=params)
